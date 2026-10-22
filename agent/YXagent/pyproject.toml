@@ -1,0 +1,57 @@
+[project]
+name = "yxagent"
+version = "0.1.0"
+description = "YXAgent —— 分层架构的终端智能体（core + tui）"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+dependencies = [
+    "openai>=1.40",
+    "textual>=0.60",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[project.scripts]
+yxagent = "tui.app:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["core", "tui"]
+
+[tool.setuptools.package-dir]
+"" = "."
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "BLE", "RUF"]
+ignore = [
+    "E501",   # 行宽由 formatter 负责
+    "B008",   # Textual 的 Binding/Widget API 允许调用表达式
+    "RUF012", # Textual 的 BINDINGS / CSS 等类属性约定使用可变列表
+    "RUF001", # 允许中文全角标点出现在文档字符串中
+    "RUF002",
+    "RUF003",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E402"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["core", "tui"]

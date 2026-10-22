@@ -1,0 +1,110 @@
+/* YXAgent TUI 主题与布局
+ *
+ * 命名约定：
+ *   - 布局类  —— 只负责尺寸与排布；
+ *   - 外观类  —— 只负责颜色与边框。
+ */
+
+Screen {
+    background: $surface;
+    layers: base;
+}
+
+/* ---------------------------------------------------------------- 顶部 */
+
+StatusBar {
+    height: 2;
+    border-bottom: solid $panel-darken-2;
+}
+
+Header {
+    dock: top;
+}
+
+Footer {
+    dock: bottom;
+}
+
+/* ---------------------------------------------------------------- 对话区 */
+
+ChatLog {
+    scrollbar-size-vertical: 1;
+    scrollbar-gutter: stable;
+}
+
+UserMessage {
+    background: $boost;
+    border-left: thick $accent;
+}
+
+AssistantMessage {
+    border-left: thick $success;
+}
+
+SystemMessage {
+    border-left: thick $warning;
+    color: $text-muted;
+}
+
+SystemMessage.error {
+    border-left: thick $error;
+    color: $error;
+}
+
+AssistantMessage Markdown {
+    margin: 0;
+}
+
+/* ---------------------------------------------------------------- 工具调用 */
+
+ToolCallView {
+    border-left: thick $warning;
+    background: $panel;
+}
+
+ToolCallView .tool-status {
+    color: $warning;
+    text-style: italic;
+}
+
+ToolCallView .tool-status.is-error {
+    color: $error;
+    text-style: bold;
+}
+
+ToolCallView .tool-result {
+    color: $text-muted;
+}
+
+/* ---------------------------------------------------------------- 输入区 */
+
+InputBar {
+    dock: bottom;
+    height: auto;
+    padding: 0 2;
+}
+
+InputBar .hint {
+    width: 1fr;
+    height: 0;
+    color: $text-muted;
+}
+
+PromptInput {
+    width: 1fr;
+    height: auto;
+    min-height: 3;
+    max-height: 12;
+    border: round $accent;
+    background: $surface;
+}
+
+PromptInput:focus {
+    border: round $accent-lighten-1;
+}
+
+/* ---------------------------------------------------------------- 其它 */
+
+#welcome-banner {
+    display: none;
+}
