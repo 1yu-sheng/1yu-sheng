@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# 工具与缓存
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 本地配置（含密钥）
+config.ini
